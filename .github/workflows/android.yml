@@ -16,7 +16,7 @@ jobs:
           yarn global add react-native-cli
       - name: Install yarn dependencies
         run: |
-          yarn install
+          yarn install --ignore-engines
       - name: Build android
         env:
           ANDROID_KEY_STORE_PASSWORD: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
