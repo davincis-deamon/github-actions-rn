@@ -1,0 +1,50 @@
+name: Build Android APK And Upload
+on:
+  push:
+    branches:
+      - android
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Getting the repo
+        uses: actions/checkout@v2
+      - name: Installing node
+        uses: actions/setup-node@v1
+      - name: Install React Native CLI
+        run: |
+          yarn global add react-native-cli
+      - name: Install yarn dependencies
+        run: |
+          yarn install
+      - name: Build android
+        env:
+          ANDROID_KEY_STORE_PASSWORD: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
+          ANDROID_ALIAS: ${{ secrets.ANDROID_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          export VERSION_CODE=${{ github.run_number }}
+          export VERSION_NAME=1.0.${{ github.run_number }}
+          echo ${{ secrets.ANDROID_SIGNING_KEY }} | base64 --decode > android/app/production.keystore
+          cd android && ./gradlew -PversCode=$VERSION_CODE -PversName=$VERSION_NAME :app:assembleRelease
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: android/app/build/outputs/apk/release/app-release.apk
+
+  upload-android:
+    needs: build-android
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: artifact
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{secrets.ANDROID_FIREBASE_APP_ID}}
+          token: ${{secrets.ANDROID_FIREBASE_TOKEN}}
+          groups: automation_testers
+          file: app-release.apk

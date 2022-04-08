@@ -137,8 +137,8 @@ android {
         applicationId "com.github"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionName System.getenv('VERSION_NAME') ? System.getenv('VERSION_NAME') : "1.0.0"
+        versionCode System.getenv('VERSION_CODE') ? System.getenv('VERSION_CODE') as Integer : 1
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
@@ -218,6 +218,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        production {
+            storeFile file('production.keystore')
+            storePassword System.getenv("ANDROID_KEY_STORE_PASSWORD")
+            keyAlias System.getenv("ANDROID_ALIAS")
+            keyPassword System.getenv("ANDROID_KEY_PASSWORD")
+        }
     }
     buildTypes {
         debug {
@@ -226,7 +232,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.production
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
