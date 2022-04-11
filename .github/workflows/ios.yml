@@ -1,0 +1,22 @@
+name: Build iOS TestFlight
+on:
+  push:
+    branches:
+      - ios
+jobs:
+  deploy:
+    name: Deploying to Testflight
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Install gpg
+        run: brew install gnupg
+      - name: Setup provisioning profile
+        env:
+          APPLE_ENCRYPTION_PASSPHRASE: ${{ secrets.APPLE_ENCRYPTION_PASSPHRASE }}
+        run: ./.github/secrets/decrypt_secrets.sh
+      - name: Archiving project
+        env:
+          PR_NUMBER: $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+        run: ./.github/scripts/archive_app.sh
