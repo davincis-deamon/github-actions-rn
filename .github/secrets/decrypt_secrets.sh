@@ -20,5 +20,6 @@ security list-keychain -d user -s "$KEYCHAIN_PATH"
 # apply provisioning profile
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 cp "$PP_PATH" ~/Library/MobileDevice/Provisioning\ Profiles
+echo "$RUNNER_TEMP"
 echo "Keychains updated"
 
