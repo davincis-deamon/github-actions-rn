@@ -1,8 +1,8 @@
 #!/bin/sh
 # create variables
-CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
-PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
-KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+CERTIFICATE_PATH=$PWD/build_certificate.p12
+PP_PATH=$PWD/build_pp.mobileprovision
+KEYCHAIN_PATH=$PWD/app-signing.keychain-db
 
 # import certificate and provisioning profile from secrets
 echo -n "$APPLE_PROVISION_PROFILE_BASE64" | base64 --decode --output "$CERTIFICATE_PATH"
@@ -20,6 +20,7 @@ security list-keychain -d user -s "$KEYCHAIN_PATH"
 # apply provisioning profile
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 cp "$PP_PATH" ~/Library/MobileDevice/Provisioning\ Profiles
-echo "$RUNNER_TEMP"
+echo "RUNNER_TEMP : $RUNNER_TEMP"
+echo "PWD : $PWD"
 echo "Keychains updated"
 
