@@ -8,5 +8,5 @@ cd ios
 #            -configuration AppStoreDistribution \
 #            -archivePath $PWD/build/github.xcarchive \
 #            clean archive | xcpretty
-xcodebuild -exportArchive -archivePath $PWD/build/github.xcarchive -exportOptionsPlist github/exportOptions.plist -exportPath $cur_dir/../../ios/build/Products/IPA
+xcodebuild -exportArchive -archivePath $PWD/build/github.xcarchive -exportOptionsPlist github/exportOptions.plist -exportPath $PWD/build/github.xcarchive
 
