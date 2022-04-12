@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Install dependencies
-        run: ./.github/secrets/install_dependancies.sh
+        run: ./.github/scripts/install_dependancies.sh
       - name: Checkout repository
         uses: actions/checkout@v1
       - name: Install gpg
