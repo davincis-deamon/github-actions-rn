@@ -8,10 +8,10 @@ jobs:
     name: Deploying to Testflight
     runs-on: macOS-latest
     steps:
-      - name: Install dependencies
-        run: ./.github/scripts/install_dependancies.sh
       - name: Checkout repository
         uses: actions/checkout@v1
+      - name: Install dependencies
+        run: ./.github/scripts/install_dependancies.sh
       - name: Install gpg
         run: brew install gnupg
       - name: Setup provisioning profile
