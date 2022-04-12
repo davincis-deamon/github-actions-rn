@@ -16,9 +16,10 @@ jobs:
         env:
           APPLE_ENCRYPTION_PASSPHRASE: ${{ secrets.APPLE_ENCRYPTION_PASSPHRASE }}
           APPLE_DISTRIBUTION_PASSWORD: ${{ secrets.APPLE_DISTRIBUTION_PASSWORD }}
+          APPLE_DEVELOPMENT_PASSWORD: ${{ secrets.APPLE_DEVELOPMENT_PASSWORD }}
           APPLE_KEYCHAIN_PASSWORD: ${{ secrets.APPLE_KEYCHAIN_PASSWORD }}
         run: ./.github/secrets/decrypt_secrets.sh
-      - name: Archiving project
-        env:
-          PR_NUMBER: $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-        run: ./.github/scripts/archive_app.sh
+#      - name: Archiving project
+#        env:
+#          PR_NUMBER: $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+#        run: ./.github/scripts/archive_app.sh
