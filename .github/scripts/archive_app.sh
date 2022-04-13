@@ -8,6 +8,5 @@ xcodebuild -workspace github.xcworkspace \
             -exportArchive \
             -exportOptionsPlist github/exportOptions.plist \
             -configuration AppStoreDistribution \
-            -archivePath $PWD/build/github.xcarchive \
             clean archive | xcpretty
 
