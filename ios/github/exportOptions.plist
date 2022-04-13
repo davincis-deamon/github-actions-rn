@@ -11,7 +11,7 @@
 	<key>provisioningProfiles</key>
 	<dict>
 		<key>com.github</key>
-		<string>match AppStore com.github</string>
+		<string>Github_Actions_Provisioning</string>
 	</dict>
 </dict>
 </plist>
