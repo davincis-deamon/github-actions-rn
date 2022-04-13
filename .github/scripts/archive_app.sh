@@ -9,5 +9,9 @@ cd ios
 #            -archivePath $PWD/build/github.xcarchive \
 #            clean archive | xcpretty
 
-xcodebuild -exportArchive -exportOptionsPlist "github/exportOptions.plist" -archivePath "$PWD/build/github.xcarchive" -exportPath "$PWD/build/github.ipa"
+xcodebuild -project github.xcodeproj \
+            -scheme github \
+            -sdk iphoneos \
+            -configuration Debug \
+            clean build | xcpretty
 
