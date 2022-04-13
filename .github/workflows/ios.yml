@@ -18,8 +18,8 @@ jobs:
           project-path: ios/github.xcodeproj
           p12-base64: ${{ secrets.APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
           mobileprovision-base64: ${{ secrets.APPLE_PROVISION_PROFILE_BASE64 }}
-          code-signing-identity: 'iPhone Distribution'
+          code-signing-identity: 'iPhone Developer'
           team-id: ${{ secrets.APPLE_TEAM_ID }}
-          certificate-password: ${{ secrets.APPLE_DISTRIBUTION_PASSWORD }}
+          certificate-password: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           workspace-path: ios/github.xcworkspace
 
