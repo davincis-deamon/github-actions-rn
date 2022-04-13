@@ -51,10 +51,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>provisioningProfiles</key>
-    <dict>
-        <key>com.github</key>
-        <string>Github_Actions_Provisioning</string>
-    </dict>
 </dict>
 </plist>
