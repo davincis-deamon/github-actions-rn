@@ -30,4 +30,15 @@ jobs:
           team-id: ${{ secrets.APPLE_TEAM_ID }}
           certificate-password: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
           workspace-path: ios/github.xcworkspace
-
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Github IOS IPA
+          path: 'output.ipa'
+      - name: 'Upload app to TestFlight'
+        uses: apple-actions/upload-testflight-build@v1
+        with:
+          app-path: 'output.ipa'
+          issuer-id: ${{ secrets.APPLE_APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPLE_APPSTORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.APPLE_APPSTORE_API_PRIVATE_KEY }}
