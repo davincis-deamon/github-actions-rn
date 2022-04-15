@@ -12,14 +12,14 @@ jobs:
         uses: actions/checkout@v1
       - name: Install dependencies
         run: ./.github/scripts/install_dependancies.sh
-      - name: Install gpg
-        run: brew install gnupg
-      - name: Setup provisioning profile
-        env:
-          APPLE_ENCRYPTION_PASSPHRASE: ${{ secrets.APPLE_ENCRYPTION_PASSPHRASE }}
-          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
-          APPLE_KEYCHAIN_PASSWORD: ${{ secrets.APPLE_KEYCHAIN_PASSWORD }}
-        run: ./.github/secrets/decrypt_secrets.sh
+#      - name: Install gpg
+#        run: brew install gnupg
+#      - name: Setup provisioning profile
+#        env:
+#          APPLE_ENCRYPTION_PASSPHRASE: ${{ secrets.APPLE_ENCRYPTION_PASSPHRASE }}
+#          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+#          APPLE_KEYCHAIN_PASSWORD: ${{ secrets.APPLE_KEYCHAIN_PASSWORD }}
+#        run: ./.github/secrets/decrypt_secrets.sh
       - name: Build IOS App
         uses: yukiarrr/ios-build-action@v1.4.0
         with:

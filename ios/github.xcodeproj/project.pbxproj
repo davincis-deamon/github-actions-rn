@@ -504,7 +504,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.russel.github;
 				PRODUCT_NAME = github;
-				PROVISIONING_PROFILE_SPECIFIER = "iOS Distribution Apr 13 2023 1";
+				PROVISIONING_PROFILE_SPECIFIER = "Provisioning Profile 1";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -533,7 +533,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.russel.github;
 				PRODUCT_NAME = github;
-				PROVISIONING_PROFILE_SPECIFIER = "iOS Distribution Apr 13 2023 1";
+				PROVISIONING_PROFILE_SPECIFIER = "Provisioning Profile 1";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
