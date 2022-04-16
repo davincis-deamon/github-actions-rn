@@ -137,8 +137,8 @@ android {
         applicationId "com.russel.github"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName System.getenv('VERSION_NAME') ? System.getenv('VERSION_NAME') : "1.0.0"
-        versionCode System.getenv('VERSION_CODE') ? System.getenv('VERSION_CODE') as Integer : 1
+        versionName "1.0.0"
+        versionCode 10
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
         if (isNewArchitectureEnabled()) {
