@@ -28,7 +28,7 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON_TEXT }}
           packageName: com.russel.github
           releaseFiles: android/app/build/outputs/bundle/release/*.aab
-          track: alpha
+          track: internal
           status: completed
           inAppUpdatePriority: 2
 
