@@ -134,7 +134,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.github"
+        applicationId "com.russel.github"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionName System.getenv('VERSION_NAME') ? System.getenv('VERSION_NAME') : "1.0.0"
