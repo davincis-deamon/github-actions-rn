@@ -22,29 +22,7 @@ jobs:
           export VERSION_NAME=1.0.${{ github.run_number }}
           echo ${{ secrets.ANDROID_SIGNING_KEY }} | base64 --decode > android/app/production.keystore
           cd android && ./gradlew -PversCode=$VERSION_CODE -PversName=$VERSION_NAME :app:assembleRelease
-#      - name: Upload Artifact
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: artifact
-#          path: android/app/build/outputs/apk/release/app-release.apk
-
-#  upload-android:
-#    needs: build-android
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Download artifact
-#        uses: actions/download-artifact@v2
-#        with:
-#          name: artifact
-#      - name: upload artifact to Firebase App Distribution
-#        uses: wzieba/Firebase-Distribution-Github-Action@v1
-#        with:
-#          appId: ${{secrets.ANDROID_FIREBASE_APP_ID}}
-#          token: ${{secrets.ANDROID_FIREBASE_TOKEN}}
-#          groups: automation_testers
-#          file: app-release.apk
-            ## Distribute  App to google play alpha track
-  - name: Upload App to Google Play
+    - name: Upload App to Google Play
       uses: r0adkll/upload-google-play@v1
       with:
         serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON_TEXT }}
