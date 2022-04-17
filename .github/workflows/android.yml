@@ -1,0 +1,35 @@
+name: Build Android APK And Upload
+on:
+  push:
+    branches:
+      - android
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Getting the repo
+        uses: actions/checkout@v2
+      - name: Install yarn dependencies
+        run: |
+          yarn install --ignore-engines
+      - name: Build android
+        env:
+          ANDROID_KEY_STORE_PASSWORD: ${{ secrets.ANDROID_KEY_STORE_PASSWORD }}
+          ANDROID_ALIAS: ${{ secrets.ANDROID_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          export VERSION_CODE=${{ github.run_number }}
+          export VERSION_NAME=1.0.${{ github.run_number }}
+          echo ${{ secrets.ANDROID_SIGNING_KEY }} | base64 --decode > android/app/production.keystore
+          cd android && ./gradlew -PversCode=$VERSION_CODE -PversName=$VERSION_NAME :app:bundleRelease
+      - name: Upload App to Google Play
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON_TEXT }}
+          packageName: com.russel.github
+          releaseFiles: android/app/build/outputs/bundle/release/*.aab
+          track: internal
+          status: draft
+          inAppUpdatePriority: 2
+
+
