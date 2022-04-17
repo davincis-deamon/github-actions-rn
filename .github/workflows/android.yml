@@ -2,7 +2,7 @@ name: Build Android APK And Upload
 on:
   push:
     branches:
-      - android
+      - master
 jobs:
   build-android:
     runs-on: ubuntu-latest
