@@ -2,7 +2,7 @@ name: Build iOS TestFlight
 on:
   push:
     branches:
-      - ios
+      - ios-private-repo
 jobs:
   deploy:
     name: Deploying to Testflight
@@ -12,33 +12,32 @@ jobs:
         uses: actions/checkout@v1
       - name: Install dependencies
         run: ./.github/scripts/install_dependancies.sh
-#      - name: Install gpg
-#        run: brew install gnupg
-#      - name: Setup provisioning profile
-#        env:
-#          APPLE_ENCRYPTION_PASSPHRASE: ${{ secrets.APPLE_ENCRYPTION_PASSPHRASE }}
-#          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
-#          APPLE_KEYCHAIN_PASSWORD: ${{ secrets.APPLE_KEYCHAIN_PASSWORD }}
-#        run: ./.github/secrets/decrypt_secrets.sh
-      - name: Build IOS App
-        uses: yukiarrr/ios-build-action@v1.4.0
-        with:
-          project-path: ios/github.xcodeproj
-          p12-base64: ${{ secrets.APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
-          mobileprovision-base64: ${{ secrets.APPLE_PROVISION_PROFILE_BASE64 }}
-          code-signing-identity: 'iPhone Distribution'
-          team-id: ${{ secrets.APPLE_TEAM_ID }}
-          certificate-password: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
-          workspace-path: ios/github.xcworkspace
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: Github IOS IPA
-          path: 'output.ipa'
-      - name: 'Upload app to TestFlight'
-        uses: apple-actions/upload-testflight-build@v1
-        with:
-          app-path: 'output.ipa'
-          issuer-id: ${{ secrets.APPLE_APPSTORE_ISSUER_ID }}
-          api-key-id: ${{ secrets.APPLE_APPSTORE_API_KEY_ID }}
-          api-private-key: ${{ secrets.APPLE_APPSTORE_API_PRIVATE_KEY }}
+      - name: Install gpg
+        run: brew install gnupg
+      - name: Setup provisioning profile
+        env:
+          SSH_KEY_ENCRYPTION_PASSPHRASE: ${{ secrets.SSH_KEY_ENCRYPTION_PASSPHRASE }}
+          SSH_KEY_PASSPHRASE: ${{ secrets.SSH_KEY_PASSPHRASE }}
+        run: ./.github/secrets/decrypt_secrets.sh
+#      - name: Build IOS App
+#        uses: yukiarrr/ios-build-action@v1.4.0
+#        with:
+#          project-path: ios/github.xcodeproj
+#          p12-base64: ${{ secrets.APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
+#          mobileprovision-base64: ${{ secrets.APPLE_PROVISION_PROFILE_BASE64 }}
+#          code-signing-identity: 'iPhone Distribution'
+#          team-id: ${{ secrets.APPLE_TEAM_ID }}
+#          certificate-password: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+#          workspace-path: ios/github.xcworkspace
+#      - name: Upload Artifact
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: Github IOS IPA
+#          path: 'output.ipa'
+#      - name: 'Upload app to TestFlight'
+#        uses: apple-actions/upload-testflight-build@v1
+#        with:
+#          app-path: 'output.ipa'
+#          issuer-id: ${{ secrets.APPLE_APPSTORE_ISSUER_ID }}
+#          api-key-id: ${{ secrets.APPLE_APPSTORE_API_KEY_ID }}
+#          api-private-key: ${{ secrets.APPLE_APPSTORE_API_PRIVATE_KEY }}
