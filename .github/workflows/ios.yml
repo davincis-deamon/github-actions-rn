@@ -22,7 +22,7 @@ jobs:
       - name: Setup provisioning profile
         env:
           PRIVATE_REPO_SSH_URL: ${{ secrets.PRIVATE_REPO_SSH_URL }}
-        run: ./.github/secrets/clone_repo.sh
+        run: ./.github/scripts/clone_repo.sh
 #      - name: Build IOS App
 #        uses: yukiarrr/ios-build-action@v1.4.0
 #        with:
