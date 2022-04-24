@@ -10,15 +10,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
-      - name: Install dependencies
-        run: ./.github/scripts/install_dependancies.sh
+#      - name: Install dependencies
+#        run: ./.github/scripts/install_dependancies.sh
       - name: Install gpg
         run: brew install gnupg
-      - name: Setup provisioning profile
+      - name: Decrypt Secretes
         env:
           SSH_KEY_ENCRYPTION_PASSPHRASE: ${{ secrets.SSH_KEY_ENCRYPTION_PASSPHRASE }}
           SSH_KEY_PASSPHRASE: ${{ secrets.SSH_KEY_PASSPHRASE }}
         run: ./.github/secrets/decrypt_secrets.sh
+      - name: Setup provisioning profile
+        env:
+          PRIVATE_REPO_SSH_URL: ${{ secrets.PRIVATE_REPO_SSH_URL }}
+        run: ./.github/secrets/clone_repo.sh
 #      - name: Build IOS App
 #        uses: yukiarrr/ios-build-action@v1.4.0
 #        with:
