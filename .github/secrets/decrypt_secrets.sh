@@ -13,3 +13,4 @@ gpg --quiet --batch --yes --decrypt --passphrase="$SSH_KEY_ENCRYPTION_PASSPHRASE
 #security default-keychain -s ~/Library/Keychains/build.keychain
 #security unlock-keychain -p "" ~/Library/Keychains/build.keychain
 #security set-key-partition-list -S apple-tool:,apple: -s -k "" ~/Library/Keychains/build.keychain
+chmod 400 ./.github/secrets/ssh_key
