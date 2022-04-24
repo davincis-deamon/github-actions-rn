@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
-#      - name: Install dependencies
-#        run: ./.github/scripts/install_dependancies.sh
       - name: Install gpg
         run: brew install gnupg
       - name: Decrypt Secretes
@@ -23,6 +21,8 @@ jobs:
         env:
           PRIVATE_REPO_SSH_URL: ${{ secrets.PRIVATE_REPO_SSH_URL }}
         run: ./.github/scripts/clone_repo.sh
+      - name: Install dependencies
+        run: ./.github/scripts/install_dependancies.sh
 #      - name: Build IOS App
 #        uses: yukiarrr/ios-build-action@v1.4.0
 #        with:
