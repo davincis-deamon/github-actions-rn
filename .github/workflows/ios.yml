@@ -19,7 +19,8 @@ jobs:
         run: ./.github/secrets/decrypt_secrets.sh
       - name: Clone Private Repo
         env:
-          PRIVATE_REPO_1_SSH_URL: ${{ secrets.REPO_2_SSH_URL }}
+          PRIVATE_REPO_SSH_URL: ${{ secrets.REPO_2_SSH_URL }}
+          PRIVATE_REPO_BRANCH: ${{ secrets.REPO_2_BRANCH }}
         run: ./.github/scripts/clone_repo.sh
       - name: Install dependencies
         run: ./.github/scripts/install_dependancies.sh
