@@ -33,6 +33,7 @@ jobs:
           team-id: ${{ secrets.REPO_1_APPLE_TEAM_ID }}
           certificate-password: ${{ secrets.REPO_1_APPLE_CERTIFICATE_PASSWORD }}
           workspace-path: ${{ secrets.REPO_1_XCWORKSPACE_PATH }}
+          scheme: ${{ secrets.REPO_1_APPLE_SCHEME }}
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
