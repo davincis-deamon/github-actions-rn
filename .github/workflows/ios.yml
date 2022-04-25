@@ -2,7 +2,7 @@ name: Build iOS TestFlight
 on:
   push:
     branches:
-      - ios-private-repo
+      - ios-private-repo-2
 jobs:
   deploy:
     name: Deploying to Testflight
@@ -19,20 +19,20 @@ jobs:
         run: ./.github/secrets/decrypt_secrets.sh
       - name: Clone Private Repo
         env:
-          PRIVATE_REPO_1_SSH_URL: ${{ secrets.PRIVATE_REPO_1_SSH_URL }}
+          REPO_SSH_URL: ${{ secrets.REPO_2_SSH_URL }}
         run: ./.github/scripts/clone_repo.sh
       - name: Install dependencies
         run: ./.github/scripts/install_dependancies.sh
       - name: Build IOS App
         uses: yukiarrr/ios-build-action@v1.4.0
         with:
-          project-path: ${{ secrets.REPO_1_XCODEPROJ_PATH }}
-          p12-base64: ${{ secrets.REPO_1_APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
-          mobileprovision-base64: ${{ secrets.REPO_1_APPLE_PROVISION_PROFILE_BASE64 }}
+          project-path: ${{ secrets.REPO_2_XCWORKSPACE_PATH }}
+          p12-base64: ${{ secrets.REPO_2_APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
+          mobileprovision-base64: ${{ secrets.REPO_2_APPLE_PROVISION_PROFILE_BASE64 }}
           code-signing-identity: 'iPhone Distribution'
-          team-id: ${{ secrets.REPO_1_APPLE_TEAM_ID }}
-          certificate-password: ${{ secrets.REPO_1_APPLE_CERTIFICATE_PASSWORD }}
-          workspace-path: ${{ secrets.REPO_1_XCWORKSPACE_PATH }}
+          team-id: ${{ secrets.REPO_2_APPLE_TEAM_ID }}
+          certificate-password: ${{ secrets.REPO_2_APPLE_CERTIFICATE_PASSWORD }}
+          workspace-path: ${{ secrets.REPO_2_XCODEPROJ_PATH }}
           scheme: ${{ secrets.REPO_1_APPLE_SCHEME }}
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
@@ -43,6 +43,6 @@ jobs:
         uses: apple-actions/upload-testflight-build@v1
         with:
           app-path: 'output.ipa'
-          issuer-id: ${{ secrets.REPO_1_APPLE_APPSTORE_ISSUER_ID }}
-          api-key-id: ${{ secrets.REPO_1_APPLE_APPSTORE_API_KEY_ID }}
-          api-private-key: ${{ secrets.REPO_1_APPLE_APPSTORE_API_PRIVATE_KEY }}
+          issuer-id: ${{ secrets.REPO_2_APPLE_APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.REPO_2_APPLE_APPSTORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.REPO_2_APPLE_APPSTORE_API_PRIVATE_KEY }}
