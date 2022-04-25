@@ -36,12 +36,12 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Github IOS IPA
+          name: Private Repo Ipa Upload
           path: 'output.ipa'
       - name: 'Upload app to TestFlight'
         uses: apple-actions/upload-testflight-build@v1
         with:
           app-path: 'output.ipa'
-          issuer-id: ${{ secrets.APPLE_APPSTORE_ISSUER_ID }}
-          api-key-id: ${{ secrets.APPLE_APPSTORE_API_KEY_ID }}
-          api-private-key: ${{ secrets.APPLE_APPSTORE_API_PRIVATE_KEY }}
+          issuer-id: ${{ secrets.REPO_1_APPLE_APPSTORE_ISSUER_ID }}
+          api-key-id: ${{ secrets.REPO_1_APPLE_APPSTORE_API_KEY_ID }}
+          api-private-key: ${{ secrets.REPO_1_APPLE_APPSTORE_API_PRIVATE_KEY }}
