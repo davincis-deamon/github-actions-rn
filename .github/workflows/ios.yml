@@ -35,11 +35,11 @@ jobs:
           certificate-password: ${{ secrets.REPO_4_APPLE_CERTIFICATE_PASSWORD }}
           workspace-path: ${{ secrets.REPO_4_XCWORKSPACE_PATH }}
           scheme: ${{ secrets.REPO_4_APPLE_SCHEME }}
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: Private Repo Ipa Upload
-          path: 'output.ipa'
+#      - name: Upload Artifact
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: Private Repo Ipa Upload
+#          path: 'output.ipa'
       - name: 'Upload app to TestFlight'
         uses: apple-actions/upload-testflight-build@v1
         with:
