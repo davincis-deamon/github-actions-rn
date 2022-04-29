@@ -28,8 +28,8 @@ jobs:
         uses: yukiarrr/ios-build-action@v1.4.0
         with:
           project-path: ${{ secrets.REPO_4_XCODEPROJ_PATH }}
-          p12-base64: ${{ secrets.REPO_2_APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
-          mobileprovision-base64: ${{ secrets.REPO_4_APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
+          p12-base64: ${{ secrets.REPO_4_APPLE_DISTRIBUTION_CERTIFICATE_BASE64 }}
+          mobileprovision-base64: ${{ secrets.REPO_4_APPLE_PROVISION_PROFILE_BASE64 }}
           code-signing-identity: 'iPhone Distribution'
           team-id: ${{ secrets.REPO_4_APPLE_TEAM_ID }}
           certificate-password: ${{ secrets.REPO_4_APPLE_CERTIFICATE_PASSWORD }}
