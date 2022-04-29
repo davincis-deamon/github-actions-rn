@@ -24,6 +24,8 @@ jobs:
         run: ./.github/scripts/clone_repo.sh
       - name: Install dependencies
         run: ./.github/scripts/install_dependancies.sh
+      - name: Download bitcode
+        run: ./private_repo/node_modules/react-native-webrtc/tools/downloadBitcode.sh
       - name: Build IOS App
         uses: yukiarrr/ios-build-action@v1.4.0
         with:
