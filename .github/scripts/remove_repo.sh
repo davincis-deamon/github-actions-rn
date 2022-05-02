@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eo pipefail
+#set -eo pipefail
 
 rm -rf private_repo
 
