@@ -30,7 +30,7 @@ jobs:
           ANDROID_KEY_STORE_PASSWORD: ${{ secrets.REPO_4_ANDROID_KEY_STORE_PASSWORD }}
           ANDROID_ALIAS: ${{ secrets.REPO_4_ANDROID_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.REPO_4_ANDROID_KEY_PASSWORD }}
-        run: |
+        run:
           echo ${{ secrets.REPO_4_ANDROID_SIGNING_KEY }} | base64 --decode > android/app/production.keystore
           cd private_repo/android && ./gradlew :app:bundleRelease
       - name: Upload App to Google Play
