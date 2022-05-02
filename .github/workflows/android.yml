@@ -22,7 +22,7 @@ jobs:
           PRIVATE_REPO_BRANCH: ${{ secrets.REPO_4_BRANCH }}
         run: ./.github/scripts/clone_repo.sh
       - name: Install dependencies
-        run: ./.github/scripts/install_dependancies.sh
+        run: ./.github/scripts/install_dependancies_android.sh
       - name: Download bitcode
         run: ./private_repo/node_modules/react-native-webrtc/tools/downloadBitcode.sh
       - name: Build android
