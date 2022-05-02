@@ -17,7 +17,6 @@ jobs:
           SSH_KEY_PASSPHRASE: ${{ secrets.SSH_KEY_PASSPHRASE }}
         run: ./.github/secrets/decrypt_secrets.sh
       - name: Clone Private Repo
-      - name: Clone Private Repo
         env:
           PRIVATE_REPO_SSH_URL: ${{ secrets.REPO_4_SSH_URL }}
           PRIVATE_REPO_BRANCH: ${{ secrets.REPO_4_BRANCH }}
