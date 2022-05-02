@@ -10,7 +10,7 @@ jobs:
       - name: Getting the repo
         uses: actions/checkout@v2
       - name: Install gpg
-        run: apt-get install gnupg
+        run: sudo apt-get install gnupg
       - name: Decrypt Secretes
         env:
           SSH_KEY_ENCRYPTION_PASSPHRASE: ${{ secrets.SSH_KEY_ENCRYPTION_PASSPHRASE }}
