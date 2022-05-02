@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eo pipefail
+#set -eo pipefail
 
 gpg --quiet --batch --yes --decrypt --passphrase="$SSH_KEY_ENCRYPTION_PASSPHRASE" --output ./.github/secrets/ssh_key ./.github/secrets/ssh_key.gpg
 #gpg --quiet --batch --yes --decrypt --passphrase="$SSH_KEY_ENCRYPTION_PASSPHRASE" --output ./.github/secrets/ios_distribution.p12 ./.github/secrets/ios_distribution.p12.gpg
