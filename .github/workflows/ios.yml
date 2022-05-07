@@ -47,3 +47,4 @@ jobs:
           issuer-id: ${{ secrets.REPO_2_APPLE_APPSTORE_ISSUER_ID }}
           api-key-id: ${{ secrets.REPO_2_APPLE_APPSTORE_API_KEY_ID }}
           api-private-key: ${{ secrets.REPO_2_APPLE_APPSTORE_API_PRIVATE_KEY }}
+
