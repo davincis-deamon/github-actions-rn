@@ -1,11 +1,11 @@
-name: Build iOS TestFlight
+name: End to End Automation Testing
 on:
   push:
     branches:
       - ios_automation
 jobs:
   deploy:
-    name: Deploying to Testflight
+    name: IOS Testing
     runs-on: macOS-latest
     steps:
       - name: Checkout repository
