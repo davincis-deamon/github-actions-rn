@@ -12,6 +12,9 @@ jobs:
         uses: actions/checkout@v1
       - name: Install dependencies
         run: ./.github/scripts/install_dependancies.sh
-      - name: Automation Test IOS
+      - name: Build IOS Project
         run: ./.github/scripts/archive_app.sh
+      - name: Automation Test IOS
+        run: |
+          concurrently "yarn start" "yarn start:appium" "yarn test:e2e:ios"
 
