@@ -1,0 +1,17 @@
+name: Build iOS TestFlight
+on:
+  push:
+    branches:
+      - ios_automation
+jobs:
+  deploy:
+    name: Deploying to Testflight
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+      - name: Install dependencies
+        run: ./.github/scripts/install_dependancies.sh
+      - name: Automation Test IOS
+        run: ./.github/scripts/archive_app.sh
+
