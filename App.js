@@ -65,6 +65,7 @@ const App: () => Node = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
+        <Text accessibilityLabel="text1"> This is simple test</Text>
         <Header />
         <View
           style={{

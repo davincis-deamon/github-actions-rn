@@ -7,11 +7,30 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "start:appium": "appium",
+    "test:e2e": "jest --testMatch=\"**/__tests__/**/*e2e.js\"",
+    "test:e2e:ios": "E2E_DEVICE=\"ios-emulator\"  npm run test:e2e"
+  },
+  "e2e": {
+    "devices": {
+      "ios-emulator": {
+        "platformName": "iOS",
+        "platformVersion": "15.2",
+        "deviceName": "iPhone 13 Pro Max",
+        "app": "./ios/DerivedData/github/Build/Products/Debug-iphonesimulator/github.app"
+      },
+      "android-emulator": {
+        "platformName": "Android",
+        "deviceName": "Android Emulator",
+        "app": "./android/app/build/outputs/apk/app-release.apk"
+      }
+    }
   },
   "dependencies": {
     "react": "17.0.2",
-    "react-native": "0.68.0"
+    "react-native": "0.68.0",
+    "webdriverio": "^7.19.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -21,7 +40,8 @@
     "eslint": "^7.32.0",
     "jest": "^26.6.3",
     "metro-react-native-babel-preset": "^0.67.0",
-    "react-test-renderer": "17.0.2"
+    "react-test-renderer": "17.0.2",
+    "wd": "^1.14.0"
   },
   "jest": {
     "preset": "react-native"
