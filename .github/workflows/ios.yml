@@ -2,7 +2,7 @@ name: Build iOS TestFlight
 on:
   push:
     branches:
-      - master
+      - ios
 jobs:
   deploy:
     name: Deploying to Testflight
