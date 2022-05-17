@@ -5,5 +5,5 @@ echo $PWD
 yarn install
 cd ios
 pod install --repo-update
- cd ..
+cd ..
 
