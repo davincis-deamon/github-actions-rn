@@ -5,8 +5,7 @@ const port = 4723;
 const driver = wd.promiseChainRemote('localhost', port);
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
 
-const delayFor = (secs = 2) =>
-  new Promise(resolve => setTimeout(() => resolve(), secs * 1000));
+const delayFor = (secs = 2) => new Promise(resolve => setTimeout(() => resolve(), secs * 1000));
 
 describe('Simple Appium Example', () => {
   beforeAll(async () => await driver.init(config));
