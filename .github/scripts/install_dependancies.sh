@@ -2,9 +2,10 @@
 
 set -eo pipefail
 echo $PWD
-npm i -g concurrently
+npm i -g pm2
 yarn install
 cd ios
 pod install --repo-update
 cd ..
+
 
