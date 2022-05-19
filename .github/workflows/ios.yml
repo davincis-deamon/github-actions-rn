@@ -51,3 +51,4 @@ jobs:
           api-private-key: ${{ secrets.REPO_4_APPLE_APPSTORE_API_PRIVATE_KEY }}
       - name: Remove Private Repo
         run: ./.github/scripts/remove_repo.sh
+
