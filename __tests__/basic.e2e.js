@@ -11,7 +11,7 @@ describe('Simple Appium Example', () => {
   beforeAll(async () => await driver.init(config));
   afterAll(async () => await driver.quit());
   it('should toggle state', async () => {
-    await delayFor(10);
+    await driver.waitForElementByAccessibilityId('text1')
     expect(await driver.hasElementByAccessibilityId('text1')).toBe(true);
   });
 });
