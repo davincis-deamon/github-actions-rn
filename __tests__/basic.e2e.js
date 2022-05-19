@@ -3,7 +3,7 @@ import config from './../e2e-config';
 
 const port = 4723;
 const driver = wd.promiseChainRemote('localhost', port);
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000000;
 
 const delayFor = (secs = 2) => new Promise(resolve => setTimeout(() => resolve(), secs * 1000));
 
