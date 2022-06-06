@@ -49,4 +49,3 @@ jobs:
           api-private-key: ${{ secrets.REPO_2_APPLE_APPSTORE_API_PRIVATE_KEY }}
 
 
-
